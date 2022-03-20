@@ -5,8 +5,10 @@ import android.provider.ContactsContract
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 
 @Database(entities = [Post::class], version = 1)
+@TypeConverters(TypeConvertorsForDB::class)
 abstract class DatabaseModel: RoomDatabase(){
     abstract fun postsDAO(): PostsDAO
 
