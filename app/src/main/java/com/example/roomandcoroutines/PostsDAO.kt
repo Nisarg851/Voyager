@@ -4,18 +4,19 @@ import androidx.room.*
 
 @Dao
 interface PostsDAO {
+    // Fetching Data Queries
     @Query("SELECT * FROM Posts WHERE id=:postId")
-    fun getPost(postId: Int): Post
+    suspend fun getPost(postId: Int): Post
 
     @Query("SELECT * FROM Posts")
-    fun getAllPosts(): List<Post>
+    suspend fun getAllPosts(): List<Post>
 
+    // Insert Data Queries
     @Insert
-    fun insertPost(post: Post)
+    suspend fun insertPost(post: Post)
 
+    // Delete Data Queries
     @Query("DELETE FROM Posts WHERE id=:postId")
-    fun deletePost(postId: Int)
+    suspend fun deletePost(postId: Int)
 
-    @Delete
-    fun deleteAllPost()
 }
